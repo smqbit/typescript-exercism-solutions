@@ -1,10 +1,17 @@
-function isLeapYear(year: number) {
-  const isDivisibleBy = (number: number) => {
-    return year % number === 0;
+function getYearDetails(year: number) {
+  return {
+    isDivisibleHelper: (number: number) => {
+      return year % number === 0;
+    },
   };
-  if ((isDivisibleBy(4) && !isDivisibleBy(100)) || isDivisibleBy(400)) {
-    return true;
-  } else return false;
+}
+
+function isLeapYear(year: number) {
+  const yearDetails = getYearDetails(year);
+  return (
+    (yearDetails.isDivisibleHelper(4) && !yearDetails.isDivisibleHelper(100)) ||
+    yearDetails.isDivisibleHelper(400)
+  );
 }
 
 export default isLeapYear;
