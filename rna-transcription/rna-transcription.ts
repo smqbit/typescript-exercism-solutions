@@ -1,6 +1,8 @@
+type DNA_NUCLEITIDE = "G" | "C" | "T" | "A" | string;
+type RNA_NUCLEITIDE = "C" | "G" | "A" | "U";
 class Transcriptor {
   toRna(dna: string) {
-    const DNA_RNA_MAPPING: Foo = {
+    const DNA_RNA_MAPPING: DnaRnaMappingInterface = {
       G: "C",
       C: "G",
       T: "A",
@@ -16,11 +18,8 @@ class Transcriptor {
     throw new Error("Invalid input DNA.");
   }
 }
-
-type d = "G" | "C" | "T" | "A";
-type r = "C" | "G" | "A" | "U";
-type Foo = {
-  [K in d]: r
+type DnaRnaMappingInterface = {
+  [key in DNA_NUCLEITIDE]: RNA_NUCLEITIDE;
 };
 
 export default Transcriptor;
